@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwjessucx4hgj"]
+
+[ext_resource type="Script" path="res://scripts/combat/Weapon.gd" id="1_dsdfg"]
+[ext_resource type="PackedScene" uid="uid://c7c5hvy8otx2q" path="res://assets/models/weapons/colt_saa.gltf" id="2_vvmg0"]
+
+[node name="Weapon" type="Node3D"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+script = ExtResource("1_dsdfg")
+
+[node name="Mesh" parent="." instance=ExtResource("2_vvmg0")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -5.09655e-09, -0.0131827, 0.0337529)

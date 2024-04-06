@@ -1,0 +1,106 @@
+[gd_scene load_steps=17 format=3 uid="uid://r4mah1dtchuy"]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_cq720"]
+[ext_resource type="Script" path="res://scripts/state_machines/StateMachine.gd" id="2_2v5k8"]
+[ext_resource type="Script" path="res://scripts/player/Camera.gd" id="2_wi1le"]
+[ext_resource type="Script" path="res://scripts/player/Arms.gd" id="3_kskxk"]
+[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateIdle.gd" id="3_vmcut"]
+[ext_resource type="PackedScene" uid="uid://cwjessucx4hgj" path="res://scenes/combat/weapon_base.tscn" id="3_xfl5t"]
+[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateWalk.gd" id="4_e1xlu"]
+[ext_resource type="PackedScene" uid="uid://cx5m7g0egs1rn" path="res://assets/models/characters/arms.glb" id="4_svdc1"]
+[ext_resource type="Script" path="res://scripts/debug/AutoStartIK.gd" id="5_36v82"]
+[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateJump.gd" id="5_kei8u"]
+[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateFall.gd" id="6_2ffql"]
+[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateCrouch.gd" id="7_rkty4"]
+[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateProne.gd" id="8_ve44b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_22wlq"]
+radius = 0.35
+height = 1.75
+
+[sub_resource type="Animation" id="Animation_uh5g0"]
+resource_name = "hold_pistol"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lw31j"]
+_data = {
+"hold_pistol": SubResource("Animation_uh5g0")
+}
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_cq720")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+shape = SubResource("CapsuleShape3D_22wlq")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+script = ExtResource("2_wi1le")
+
+[node name="Arms" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, -0.195, 0.015)
+script = ExtResource("3_kskxk")
+
+[node name="Weapon" parent="Head/Arms" instance=ExtResource("3_xfl5t")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.259723, 0, -0.347118)
+aim_position = Vector3(0.01, 0.115, -0.137)
+
+[node name="RightArmTarget" type="Marker3D" parent="Head/Arms/Weapon"]
+transform = Transform3D(1.13951e-08, -4.32804e-08, -1, -0.997148, -0.0754661, -8.09637e-09, -0.0754661, 0.997148, -4.40169e-08, -0.022986, 9.53674e-07, -0.0749705)
+gizmo_extents = 0.06
+
+[node name="Model" parent="Head/Arms" instance=ExtResource("4_svdc1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.080402, 0)
+
+[node name="Skeleton3D" parent="Head/Arms/Model/HumanArm" index="0"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
+
+[node name="RightArmIK" type="SkeletonIK3D" parent="Head/Arms/Model/HumanArm/Skeleton3D" index="1"]
+process_priority = 1
+root_bone = &"R_Biceps"
+tip_bone = &"R_Palm"
+use_magnet = true
+magnet = Vector3(-5, -5.5, 0)
+target_node = NodePath("../../../../Weapon/RightArmTarget")
+script = ExtResource("5_36v82")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Arms/Model"]
+libraries = {
+"": SubResource("AnimationLibrary_lw31j")
+}
+
+[node name="StandingCeillingCheck" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1.75, 0)
+collision_mask = 3
+
+[node name="CrouchingCeillingCheck" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1.75, 0)
+collision_mask = 3
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_2v5k8")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_vmcut")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("4_e1xlu")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("5_kei8u")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("6_2ffql")
+
+[node name="Crouch" type="Node" parent="StateMachine"]
+script = ExtResource("7_rkty4")
+
+[node name="Prone" type="Node" parent="StateMachine"]
+script = ExtResource("8_ve44b")
+
+[editable path="Head/Arms/Model"]

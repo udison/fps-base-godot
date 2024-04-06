@@ -1,0 +1,17 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bmrbb4gqqgouv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_to82u"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+ground_bottom_color = Color(0.384314, 0.454902, 0.54902, 1)
+ground_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+ground_curve = 0.211121
+
+[sub_resource type="Sky" id="Sky_hs1we"]
+sky_material = SubResource("ProceduralSkyMaterial_to82u")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_hs1we")
+tonemap_mode = 2
+glow_enabled = true

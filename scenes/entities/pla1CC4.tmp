@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://r4mah1dtchuy"]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_cq720"]
+[ext_resource type="Script" path="res://scripts/state_machines/StateMachine.gd" id="2_2v5k8"]
+[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateIdle.gd" id="3_vmcut"]
+[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateWalk.gd" id="4_e1xlu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_22wlq"]
+radius = 0.35
+height = 1.75
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_cq720")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+shape = SubResource("CapsuleShape3D_22wlq")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+
+[node name="StandingCeillingCheck" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1.75, 0)
+collision_mask = 3
+
+[node name="CrouchingCeillingCheck" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1.75, 0)
+collision_mask = 3
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_2v5k8")
+initial_state = NodePath("Walk")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_vmcut")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("4_e1xlu")

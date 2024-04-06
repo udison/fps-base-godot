@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://dps8oy35ntvyr"]
+
+[ext_resource type="Environment" uid="uid://bmrbb4gqqgouv" path="res://resources/environment/day_world_env01.tres" id="1_62q1j"]
+[ext_resource type="Texture2D" uid="uid://bv0gotjr5e1tg" path="res://assets/textures/grids/grid_dark_08.png" id="2_syaxe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idenn"]
+albedo_texture = ExtResource("2_syaxe")
+uv1_triplanar = true
+
+[node name="World" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = ExtResource("1_62q1j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.515038, 0.742329, -0.428584, 0, 0.5, 0.866025, 0.857167, -0.446036, 0.257519, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(20, 1, 20)
+material = SubResource("StandardMaterial3D_idenn")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Objects"]
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+
+[node name="Wall" type="CSGBox3D" parent="Objects/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -4)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(8, 3, 1)
+material = SubResource("StandardMaterial3D_idenn")
+
+[node name="Gap" type="CSGBox3D" parent="Objects/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.274698, -4)
+operation = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1, 0.55, 2)
+material = SubResource("StandardMaterial3D_idenn")
+
+[node name="Gap2" type="CSGBox3D" parent="Objects/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
+operation = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1, 1, 2)
+material = SubResource("StandardMaterial3D_idenn")
+
+[node name="Gap4" type="CSGBox3D" parent="Objects/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
+operation = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1, 2, 2)
+material = SubResource("StandardMaterial3D_idenn")
+
+[node name="Gap3" type="CSGBox3D" parent="Objects/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.75, -4)
+operation = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1, 1.5, 2)
+material = SubResource("StandardMaterial3D_idenn")
+
+[node name="Door" type="Node3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Frame" type="StaticBody3D" parent="Objects/Door"]
+
+[node name="Shape" type="CSGCombiner3D" parent="Objects/Door/Frame"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+
+[node name="Wall" type="CSGBox3D" parent="Objects/Door/Frame/Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(2, 3, 1)
+material = SubResource("StandardMaterial3D_idenn")
+
+[node name="Gap" type="CSGBox3D" parent="Objects/Door/Frame/Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+operation = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1, 2, 2)
+material = SubResource("StandardMaterial3D_idenn")

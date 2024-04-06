@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3yi6wsxfb6pl"]
+
+[ext_resource type="Script" path="res://scripts/debug/Debug.gd" id="1_fftkg"]
+[ext_resource type="LabelSettings" uid="uid://0ynfha4s04be" path="res://resources/hud/debug_label_settings.tres" id="2_dwhae"]
+
+[node name="Debug" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fftkg")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 1
+
+[node name="Container" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = -3
+
+[node name="FPS" type="HBoxContainer" parent="Margin/Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/Container/FPS"]
+layout_mode = 2
+text = "fps: "
+label_settings = ExtResource("2_dwhae")
+
+[node name="Value" type="Label" parent="Margin/Container/FPS"]
+layout_mode = 2
+text = "value"
+label_settings = ExtResource("2_dwhae")
+
+[node name="State" type="HBoxContainer" parent="Margin/Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/Container/State"]
+layout_mode = 2
+text = "state: "
+label_settings = ExtResource("2_dwhae")
+
+[node name="Value" type="Label" parent="Margin/Container/State"]
+layout_mode = 2
+text = "value"
+label_settings = ExtResource("2_dwhae")
+
+[node name="Velocity" type="HBoxContainer" parent="Margin/Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/Container/Velocity"]
+layout_mode = 2
+text = "velocity: "
+label_settings = ExtResource("2_dwhae")
+
+[node name="Value" type="Label" parent="Margin/Container/Velocity"]
+layout_mode = 2
+text = "value"
+label_settings = ExtResource("2_dwhae")
+
+[node name="Speed" type="HBoxContainer" parent="Margin/Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/Container/Speed"]
+layout_mode = 2
+text = "speed: "
+label_settings = ExtResource("2_dwhae")
+
+[node name="Value" type="Label" parent="Margin/Container/Speed"]
+layout_mode = 2
+text = "value"
+label_settings = ExtResource("2_dwhae")
+
+[node name="Rotation" type="HBoxContainer" parent="Margin/Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/Container/Rotation"]
+layout_mode = 2
+text = "rotation: "
+label_settings = ExtResource("2_dwhae")
+
+[node name="Value" type="Label" parent="Margin/Container/Rotation"]
+layout_mode = 2
+text = "value"
+label_settings = ExtResource("2_dwhae")
