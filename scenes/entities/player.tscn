@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://r4mah1dtchuy"]
+[gd_scene load_steps=26 format=3 uid="uid://r4mah1dtchuy"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_cq720"]
 [ext_resource type="Script" path="res://scripts/state_machines/StateMachine.gd" id="2_2v5k8"]
@@ -13,6 +13,14 @@
 [ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateFall.gd" id="6_2ffql"]
 [ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateCrouch.gd" id="7_rkty4"]
 [ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateProne.gd" id="8_ve44b"]
+[ext_resource type="AudioStream" uid="uid://ddndqj4ppghm6" path="res://assets/audio/people/footstep_dry1.wav" id="14_a1tyw"]
+[ext_resource type="Script" path="res://scripts/entities/AudioHandler.gd" id="14_gwd2c"]
+[ext_resource type="AudioStream" uid="uid://g7aksuoqbv3y" path="res://assets/audio/people/footstep_dry2.wav" id="15_d0eyw"]
+[ext_resource type="AudioStream" uid="uid://4u3blq5c8bsm" path="res://assets/audio/people/footstep_dry3.wav" id="16_qrbsu"]
+[ext_resource type="AudioStream" uid="uid://bx15utd1r3vx7" path="res://assets/audio/people/footstep_dry4.wav" id="17_kd3iy"]
+[ext_resource type="AudioStream" uid="uid://y1vllgnocasf" path="res://assets/audio/people/footstep_dry5.wav" id="18_ls4i5"]
+[ext_resource type="AudioStream" uid="uid://bo0us0ds2usly" path="res://assets/audio/people/footstep_dry6.wav" id="19_vllgc"]
+[ext_resource type="AudioStream" uid="uid://dp0j46ihuk24e" path="res://assets/audio/people/footstep_dry7.wav" id="20_f4hgq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_22wlq"]
 radius = 0.35
@@ -25,6 +33,23 @@ resource_name = "hold_pistol"
 _data = {
 "hold_pistol": SubResource("Animation_uh5g0")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kg4hm"]
+streams_count = 7
+stream_0/stream = ExtResource("14_a1tyw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_d0eyw")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("16_qrbsu")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("17_kd3iy")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("18_ls4i5")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("19_vllgc")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("20_f4hgq")
+stream_6/weight = 1.0
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 4
@@ -102,5 +127,17 @@ script = ExtResource("7_rkty4")
 
 [node name="Prone" type="Node" parent="StateMachine"]
 script = ExtResource("8_ve44b")
+
+[node name="AudioHandler" type="Node3D" parent="."]
+script = ExtResource("14_gwd2c")
+
+[node name="FootstepsSound" type="AudioStreamPlayer3D" parent="AudioHandler"]
+stream = SubResource("AudioStreamRandomizer_kg4hm")
+
+[node name="FootstepsTimer" type="Timer" parent="AudioHandler"]
+process_callback = 0
+wait_time = 0.6
+
+[connection signal="timeout" from="AudioHandler/FootstepsTimer" to="AudioHandler" method="on_footsteps_timeout"]
 
 [editable path="Head/Arms/Model"]

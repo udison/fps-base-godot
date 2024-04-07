@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dps8oy35ntvyr"]
+[gd_scene load_steps=5 format=3 uid="uid://dps8oy35ntvyr"]
 
 [ext_resource type="Environment" uid="uid://bmrbb4gqqgouv" path="res://resources/environment/day_world_env01.tres" id="1_62q1j"]
 [ext_resource type="Texture2D" uid="uid://bv0gotjr5e1tg" path="res://assets/textures/grids/grid_dark_08.png" id="2_syaxe"]
+[ext_resource type="AudioStream" uid="uid://dinwq0bbwo272" path="res://assets/audio/ambient/ambient1.wav" id="3_hl0gn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idenn"]
 albedo_texture = ExtResource("2_syaxe")
@@ -104,3 +105,9 @@ collision_layer = 2
 collision_mask = 5
 size = Vector3(1, 2, 2)
 material = SubResource("StandardMaterial3D_idenn")
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="AmbientSound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_hl0gn")
+autoplay = true
