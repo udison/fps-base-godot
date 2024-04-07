@@ -69,6 +69,7 @@ var head_height := head_height_standing
 var lean_direction := 0.0 # -1 left | right +1
 var is_aiming := false
 var aiming_mode := 'press' # TODO: move this to a configuration
+var current_stance := Stance.STAND
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -144,6 +145,7 @@ func get_state_name() -> String:
 
 func set_stance(stance: Stance):
 	var character_height = character_height_standing
+	current_stance = stance
 	
 	match stance:
 		Stance.STAND:
@@ -163,6 +165,18 @@ func set_stance(stance: Stance):
 	
 	collision.shape.height = character_height
 	collision.position.y = character_height / 2
+
+
+func is_standing():
+	return current_stance == Stance.STAND
+
+
+func is_crouching():
+	return current_stance == Stance.CROUCH
+
+
+func is_proning():
+	return current_stance == Stance.PRONE
 
 
 func lerp_head_height(delta: float):
@@ -223,7 +237,6 @@ func lean_to(direction: float):
 
 func handle_lean(delta: float):
 	rotation.z = lerp_angle(rotation.z, deg_to_rad(-lean_direction * lean_degrees), lean_velocity * delta)
-
 
 
 
