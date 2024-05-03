@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cr3kiyhrgq7wm"]
+
+[ext_resource type="Texture2D" uid="uid://ymnegaia3gpp" path="res://assets/textures/architecture/brickwall01.png" id="1_uxs82"]
+[ext_resource type="Texture2D" uid="uid://pvti6dr4ootb" path="res://assets/textures/architecture/brickwall01_normal.png" id="2_xsvcu"]
+
+[resource]
+albedo_texture = ExtResource("1_uxs82")
+normal_enabled = true
+normal_texture = ExtResource("2_xsvcu")
+uv1_triplanar = true
+texture_filter = 0

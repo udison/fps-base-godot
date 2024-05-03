@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://db1luuoe68esa"]
+
+[ext_resource type="Texture2D" uid="uid://p4xedvhy2omt" path="res://assets/textures/architecture/door01.png" id="1_lx44q"]
+[ext_resource type="Texture2D" uid="uid://0abtfunn0gc2" path="res://assets/textures/architecture/door01_normal.png" id="2_1xogt"]
+
+[resource]
+albedo_texture = ExtResource("1_lx44q")
+normal_enabled = true
+normal_scale = 1.43
+normal_texture = ExtResource("2_1xogt")
+texture_filter = 0

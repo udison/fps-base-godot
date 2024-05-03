@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://uyjejy1tplh1"]
+
+[ext_resource type="Texture2D" uid="uid://b1m0twydlislc" path="res://assets/textures/wood/oak_veneer_01_diff_128.png" id="1_gclkg"]
+[ext_resource type="Texture2D" uid="uid://bw23gftfcwypu" path="res://assets/textures/wood/oak01_normal.png" id="2_xc8n1"]
+
+[resource]
+albedo_texture = ExtResource("1_gclkg")
+normal_enabled = true
+normal_scale = 3.41
+normal_texture = ExtResource("2_xc8n1")
+uv1_triplanar = true
+texture_filter = 0

@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dps8oy35ntvyr"]
+[gd_scene load_steps=7 format=3 uid="uid://dps8oy35ntvyr"]
 
 [ext_resource type="Environment" uid="uid://bmrbb4gqqgouv" path="res://resources/environment/day_world_env01.tres" id="1_62q1j"]
 [ext_resource type="Texture2D" uid="uid://bv0gotjr5e1tg" path="res://assets/textures/grids/grid_dark_08.png" id="2_syaxe"]
+[ext_resource type="Material" uid="uid://cr3kiyhrgq7wm" path="res://materials/brickwall01.tres" id="3_54fre"]
 [ext_resource type="AudioStream" uid="uid://dinwq0bbwo272" path="res://assets/audio/ambient/ambient1.wav" id="3_hl0gn"]
+[ext_resource type="PackedScene" uid="uid://cgx3bt3j17j6d" path="res://scenes/architecture/door_base.tscn" id="4_25k50"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idenn"]
 albedo_texture = ExtResource("2_syaxe")
@@ -94,16 +96,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
 use_collision = true
 collision_layer = 2
 collision_mask = 5
-size = Vector3(2, 3, 1)
-material = SubResource("StandardMaterial3D_idenn")
+size = Vector3(2, 3, 0.256836)
+material = ExtResource("3_54fre")
 
 [node name="Gap" type="CSGBox3D" parent="Objects/Door/Frame/Shape"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946655, 1.19281, 0)
 operation = 2
 use_collision = true
 collision_layer = 2
 collision_mask = 5
-size = Vector3(1, 2, 2)
+size = Vector3(1.29272, 2.38562, 2)
 material = SubResource("StandardMaterial3D_idenn")
 
 [node name="Audio" type="Node3D" parent="."]
@@ -111,3 +113,6 @@ material = SubResource("StandardMaterial3D_idenn")
 [node name="AmbientSound" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_hl0gn")
 autoplay = true
+
+[node name="DoorFrame" parent="." instance=ExtResource("4_25k50")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, 0.3)

@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgx3bt3j17j6d"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/Door.gd" id="1_81rph"]
+[ext_resource type="Material" uid="uid://uyjejy1tplh1" path="res://materials/wood01.tres" id="1_a6x3r"]
+[ext_resource type="Material" uid="uid://db1luuoe68esa" path="res://materials/door01.tres" id="2_32nd1"]
+[ext_resource type="Script" path="res://scripts/gameplay/Interactable.gd" id="3_q7b1q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jrbk"]
+size = Vector3(1, 2.3, 0.08)
+
+[node name="DoorFrame" type="Node3D"]
+script = ExtResource("1_81rph")
+
+[node name="Shape" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+
+[node name="Frame" type="CSGBox3D" parent="Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 1.2, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1.3, 2.4, 0.2)
+material = ExtResource("1_a6x3r")
+
+[node name="Gap" type="CSGBox3D" parent="Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 1.15, 0)
+operation = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1, 2.3, 0.4)
+material = ExtResource("1_a6x3r")
+
+[node name="Door" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
+collision_layer = 10
+collision_mask = 5
+script = ExtResource("3_q7b1q")
+
+[node name="Shape" type="CSGBox3D" parent="Door"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 1.15, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1, 2.3, 0.08)
+material = ExtResource("2_32nd1")
+
+[node name="Collision" type="CollisionShape3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.15, 0)
+shape = SubResource("BoxShape3D_8jrbk")
+
+[node name="DoorArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_q7b1q")
+
+[node name="Collision" type="CollisionShape3D" parent="DoorArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 1.15, 0)
+shape = SubResource("BoxShape3D_8jrbk")
+
+[connection signal="interacted" from="Door" to="." method="toggle_door_state"]
+[connection signal="interacted" from="DoorArea" to="." method="toggle_door_state"]
