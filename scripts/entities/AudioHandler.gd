@@ -22,11 +22,12 @@ func handle_footstep():
 	footstep_timer.wait_time = footstep_timeout_crouching if entity.is_crouching() else footstep_timeout_walking
 	
 	if entity.is_proning() or not entity.is_on_floor():
+		footstep_timer.stop()
 		return
 	
 	if entity.velocity.length() > 0.1 and footstep_timer.is_stopped():
 		footstep_timer.start()
-	elif entity.velocity.length() == 0 and not footstep_timer.is_stopped():
+	elif entity.velocity.length() <= 0.1 and not footstep_timer.is_stopped():
 		footstep_timer.stop()
 
 
