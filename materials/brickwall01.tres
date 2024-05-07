@@ -7,5 +7,6 @@
 albedo_texture = ExtResource("1_uxs82")
 normal_enabled = true
 normal_texture = ExtResource("2_xsvcu")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 texture_filter = 0
