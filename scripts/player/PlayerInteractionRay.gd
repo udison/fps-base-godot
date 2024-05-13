@@ -7,7 +7,6 @@ func _process(delta):
 		var object = get_collider()
 		
 		if object.has_method('on_interaction'):
-			print(object)
 			object.on_interaction()
 		else:
 			printerr('[' + str(object) + '] Trying to interact with an object that does not extends "Interactable" class')
