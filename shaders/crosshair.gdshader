@@ -8,7 +8,7 @@ float circle(vec2 pos, float radius) {
 
 void fragment() {
 	COLOR.rgb = vec3(circle(UV - 0.5, 0.01));
-	
+
 	if (COLOR.r == 0.0 && COLOR.g == 0.0 && COLOR.b == 0.0) {
 		discard;
 	}

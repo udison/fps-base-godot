@@ -237,6 +237,3 @@ func lean_to(direction: float):
 
 func handle_lean(delta: float):
 	rotation.z = lerp_angle(rotation.z, deg_to_rad(-lean_direction * lean_degrees), lean_velocity * delta)
-
-
-

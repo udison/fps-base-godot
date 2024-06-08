@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cx5m7g0egs1rn"
-path="res://.godot/imported/arms.glb-6fbec9e703282cc1b52eb38aa05d1856.scn"
+uid="uid://c1qpxwafepdj"
+path="res://.godot/imported/old_monitor.glb-b05de1f91ec7d220f7ca19b658efc77a.scn"
 
 [deps]
 
-source_file="res://assets/models/characters/arms.glb"
-dest_files=["res://.godot/imported/arms.glb-6fbec9e703282cc1b52eb38aa05d1856.scn"]
+source_file="res://assets/models/objects/old_monitor.glb"
+dest_files=["res://.godot/imported/old_monitor.glb-b05de1f91ec7d220f7ca19b658efc77a.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -31,9 +31,16 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"monitor": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/monitor.tres"
+}
+}
+}
 fbx/importer=1
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1
-gltf/naming_version=0
+gltf/naming_version=1
 gltf/embedded_image_handling=1
