@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgx3bt3j17j6d"]
 
-[ext_resource type="Script" path="res://scripts/gameplay/Door.gd" id="1_81rph"]
+[ext_resource type="Script" uid="uid://8yphopl8q33j" path="res://scripts/gameplay/Door.gd" id="1_81rph"]
 [ext_resource type="Material" uid="uid://uyjejy1tplh1" path="res://materials/wood01.tres" id="1_a6x3r"]
 [ext_resource type="Material" uid="uid://db1luuoe68esa" path="res://materials/door01.tres" id="2_32nd1"]
-[ext_resource type="Script" path="res://scripts/gameplay/Interactable.gd" id="3_q7b1q"]
+[ext_resource type="Script" uid="uid://cc24g7kanc6ot" path="res://scripts/gameplay/Interactable.gd" id="3_q7b1q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8jrbk"]
 size = Vector3(1, 2.3, 0.08)

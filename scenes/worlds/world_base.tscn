@@ -1,15 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dps8oy35ntvyr"]
+[gd_scene load_steps=9 format=3 uid="uid://dps8oy35ntvyr"]
 
 [ext_resource type="Environment" uid="uid://bmrbb4gqqgouv" path="res://resources/environment/day_world_env01.tres" id="1_62q1j"]
 [ext_resource type="Texture2D" uid="uid://bv0gotjr5e1tg" path="res://assets/textures/grids/grid_dark_08.png" id="2_syaxe"]
 [ext_resource type="Material" uid="uid://cr3kiyhrgq7wm" path="res://materials/brickwall01.tres" id="3_54fre"]
 [ext_resource type="AudioStream" uid="uid://dinwq0bbwo272" path="res://assets/audio/ambient/ambient1.wav" id="3_hl0gn"]
 [ext_resource type="PackedScene" uid="uid://cgx3bt3j17j6d" path="res://scenes/architecture/door_base.tscn" id="4_25k50"]
-[ext_resource type="PackedScene" uid="uid://c1qpxwafepdj" path="res://assets/models/objects/old_monitor.glb" id="6_w87xw"]
+[ext_resource type="PackedScene" uid="uid://016ihu7tlxvb" path="res://scenes/objects/old_monitor.tscn" id="6_1dga5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idenn"]
 albedo_texture = ExtResource("2_syaxe")
 uv1_triplanar = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68yd7"]
+bounce = 0.1
 
 [node name="World" type="Node3D"]
 
@@ -118,5 +121,7 @@ autoplay = true
 [node name="DoorFrame" parent="." instance=ExtResource("4_25k50")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, 0.3)
 
-[node name="old_monitor" parent="." instance=ExtResource("6_w87xw")]
-transform = Transform3D(-0.0640169, 0, -0.21048, 0, 0.22, 0, 0.21048, 0, -0.0640169, 5.23698, 2.38419e-07, 2.2944)
+[node name="Monitor" parent="." instance=ExtResource("6_1dga5")]
+transform = Transform3D(0.799978, -0.528114, -0.284836, 0.555605, 0.472713, 0.683992, -0.22658, -0.705434, 0.671583, 4.6239, 1.72064, 0.179346)
+mass = 22.0
+physics_material_override = SubResource("PhysicsMaterial_68yd7")

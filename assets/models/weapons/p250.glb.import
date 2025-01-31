@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cx5m7g0egs1rn"
-path="res://.godot/imported/arms.glb-6fbec9e703282cc1b52eb38aa05d1856.scn"
+uid="uid://youf5m0ebm3j"
+path="res://.godot/imported/p250.glb-09810a6f598e476e2354058222b5b5c2.scn"
 
 [deps]
 
-source_file="res://assets/models/characters/arms.glb"
-dest_files=["res://.godot/imported/arms.glb-6fbec9e703282cc1b52eb38aa05d1856.scn"]
+source_file="res://assets/models/weapons/p250.glb"
+dest_files=["res://.godot/imported/p250.glb-09810a6f598e476e2354058222b5b5c2.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -32,8 +32,8 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-fbx/importer=1
+fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1
-gltf/naming_version=0
+gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -2,8 +2,18 @@ extends RayCast3D
 class_name PlayerInteractionRay
 
 
+var interact_hold_time := 0.0
+
+
 func _process(delta):
-	if Input.is_action_just_pressed('interact') and is_colliding():
+	handle_interaction(delta)
+
+
+func handle_interaction(delta: float):
+	if not is_colliding():
+		return
+		
+	if Input.is_action_just_pressed('interact'):
 		var object = get_collider()
 		
 		if object.has_method('on_interaction'):

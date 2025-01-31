@@ -13,10 +13,10 @@ dest_files=["res://.godot/imported/old_monitor.glb-b05de1f91ec7d220f7ca19b658efc
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
+nodes/root_type="RigidBody3D"
+nodes/root_name="Monitor"
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.22
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -36,6 +36,16 @@ _subresources={
 "monitor": {
 "use_external/enabled": true,
 "use_external/path": "res://materials/monitor.tres"
+}
+},
+"nodes": {
+"PATH:pad": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:screen": {
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

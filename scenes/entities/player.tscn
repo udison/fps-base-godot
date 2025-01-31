@@ -1,21 +1,20 @@
-[gd_scene load_steps=27 format=3 uid="uid://r4mah1dtchuy"]
+[gd_scene load_steps=24 format=3 uid="uid://r4mah1dtchuy"]
 
-[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_cq720"]
-[ext_resource type="Script" path="res://scripts/state_machines/StateMachine.gd" id="2_2v5k8"]
-[ext_resource type="Script" path="res://scripts/player/Camera.gd" id="2_wi1le"]
-[ext_resource type="Script" path="res://scripts/player/Arms.gd" id="3_kskxk"]
-[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateIdle.gd" id="3_vmcut"]
+[ext_resource type="Script" uid="uid://bdo5raheyq4r6" path="res://scripts/player/Player.gd" id="1_cq720"]
+[ext_resource type="Script" uid="uid://b43ja6fho0kpv" path="res://scripts/state_machines/StateMachine.gd" id="2_2v5k8"]
+[ext_resource type="Script" uid="uid://cscbc83muvo56" path="res://scripts/player/Camera.gd" id="2_wi1le"]
+[ext_resource type="Script" uid="uid://croi5qvprjlq3" path="res://scripts/player/Arms.gd" id="3_kskxk"]
+[ext_resource type="Script" uid="uid://b4jko4wec3iuq" path="res://scripts/state_machines/states/PlayerStateIdle.gd" id="3_vmcut"]
 [ext_resource type="PackedScene" uid="uid://cwjessucx4hgj" path="res://scenes/combat/weapon_base.tscn" id="3_xfl5t"]
-[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateWalk.gd" id="4_e1xlu"]
-[ext_resource type="PackedScene" uid="uid://cx5m7g0egs1rn" path="res://assets/models/characters/arms.glb" id="4_svdc1"]
-[ext_resource type="Script" path="res://scripts/debug/AutoStartIK.gd" id="5_36v82"]
-[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateJump.gd" id="5_kei8u"]
-[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateFall.gd" id="6_2ffql"]
-[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateCrouch.gd" id="7_rkty4"]
-[ext_resource type="Script" path="res://scripts/player/PlayerInteractionRay.gd" id="7_tdxe5"]
-[ext_resource type="Script" path="res://scripts/state_machines/states/PlayerStateProne.gd" id="8_ve44b"]
+[ext_resource type="Script" uid="uid://cxt7ui8n6yqjp" path="res://scripts/state_machines/states/PlayerStateWalk.gd" id="4_e1xlu"]
+[ext_resource type="Script" uid="uid://dnulyj3n5jy8g" path="res://scripts/state_machines/states/PlayerStateJump.gd" id="5_kei8u"]
+[ext_resource type="Script" uid="uid://sjnr2qtyyixa" path="res://scripts/state_machines/states/PlayerStateFall.gd" id="6_2ffql"]
+[ext_resource type="PackedScene" uid="uid://gfai6ybdjjs1" path="res://scenes/characters/player_arms.tscn" id="6_jv5ih"]
+[ext_resource type="Script" uid="uid://dl7e30dea1n1c" path="res://scripts/state_machines/states/PlayerStateCrouch.gd" id="7_rkty4"]
+[ext_resource type="Script" uid="uid://u217mq60x4lf" path="res://scripts/player/PlayerInteractionRay.gd" id="7_tdxe5"]
+[ext_resource type="Script" uid="uid://dllosfotilyb" path="res://scripts/state_machines/states/PlayerStateProne.gd" id="8_ve44b"]
 [ext_resource type="AudioStream" uid="uid://ddndqj4ppghm6" path="res://assets/audio/people/footstep_dry1.wav" id="14_a1tyw"]
-[ext_resource type="Script" path="res://scripts/entities/AudioHandler.gd" id="14_gwd2c"]
+[ext_resource type="Script" uid="uid://nn5vlanlo1d2" path="res://scripts/entities/AudioHandler.gd" id="14_gwd2c"]
 [ext_resource type="AudioStream" uid="uid://g7aksuoqbv3y" path="res://assets/audio/people/footstep_dry2.wav" id="15_d0eyw"]
 [ext_resource type="AudioStream" uid="uid://4u3blq5c8bsm" path="res://assets/audio/people/footstep_dry3.wav" id="16_qrbsu"]
 [ext_resource type="AudioStream" uid="uid://bx15utd1r3vx7" path="res://assets/audio/people/footstep_dry4.wav" id="17_kd3iy"]
@@ -26,14 +25,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_22wlq"]
 radius = 0.35
 height = 1.75
-
-[sub_resource type="Animation" id="Animation_uh5g0"]
-resource_name = "hold_pistol"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lw31j"]
-_data = {
-"hold_pistol": SubResource("Animation_uh5g0")
-}
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kg4hm"]
 streams_count = 7
@@ -65,39 +56,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, -0.195, 0.015)
 script = ExtResource("3_kskxk")
 
 [node name="Weapon" parent="Head/Arms" instance=ExtResource("3_xfl5t")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.259723, 0, -0.347118)
-aim_position = Vector3(0.01, 0.115, -0.137)
-
-[node name="RightArmTarget" type="Marker3D" parent="Head/Arms/Weapon"]
-transform = Transform3D(1.13951e-08, -4.32804e-08, -1, -0.997148, -0.0754661, -8.09637e-09, -0.0754661, 0.997148, -4.40169e-08, -0.022986, 9.53674e-07, -0.0749705)
-gizmo_extents = 0.06
-
-[node name="Model" parent="Head/Arms" instance=ExtResource("4_svdc1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.080402, 0)
-
-[node name="Skeleton3D" parent="Head/Arms/Model/HumanArm" index="0"]
-transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
-
-[node name="RightArmIK" type="SkeletonIK3D" parent="Head/Arms/Model/HumanArm/Skeleton3D" index="1"]
-process_priority = 1
-root_bone = &"R_Biceps"
-tip_bone = &"R_Palm"
-use_magnet = true
-magnet = Vector3(-5, -5.5, 0)
-target_node = NodePath("../../../../Weapon/RightArmTarget")
-script = ExtResource("5_36v82")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Arms/Model"]
-libraries = {
-"": SubResource("AnimationLibrary_lw31j")
-}
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.188, -0.02, -0.367)
+visible = false
+aim_position = Vector3(0.011, 0.117, -0.2)
 
 [node name="InteractionRay" type="RayCast3D" parent="Head/Arms"]
+visible = false
 target_position = Vector3(0, 0, -1.5)
 collision_mask = 8
 collide_with_areas = true
 debug_shape_custom_color = Color(0.941176, 0, 0.0745098, 1)
 script = ExtResource("7_tdxe5")
+
+[node name="PlayerArms" parent="Head/Arms" instance=ExtResource("6_jv5ih")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="StandingCeillingCheck" type="RayCast3D" parent="."]
 target_position = Vector3(0, 1.75, 0)
@@ -140,5 +112,3 @@ process_callback = 0
 wait_time = 0.6
 
 [connection signal="timeout" from="AudioHandler/FootstepsTimer" to="AudioHandler" method="on_footsteps_timeout"]
-
-[editable path="Head/Arms/Model"]

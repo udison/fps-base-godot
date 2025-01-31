@@ -12,7 +12,7 @@ config_version=5
 
 config/name="FPS Base"
 run/main_scene="res://scenes/game.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -21,14 +21,26 @@ Globals="*res://scripts/singletons/Globals.gd"
 
 [display]
 
-window/size/viewport_width=1366
-window/size/viewport_height=768
 window/size/mode=3
+window/size/window_width_override=1366
+window/size/window_height_override=768
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [dotnet]
 
 project/assembly_name="Wild West FPS"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "orange",
+"res://materials/": "red",
+"res://resources/": "blue",
+"res://scenes/": "green",
+"res://scripts/": "yellow"
+}
 
 [filesystem]
 
@@ -175,4 +187,4 @@ interact={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-anti_aliasing/quality/use_taa=true
+anti_aliasing/screen_space_roughness_limiter/enabled=false

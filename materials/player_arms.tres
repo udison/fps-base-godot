@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://csuadklfb28a6"]
+
+[ext_resource type="Texture2D" uid="uid://gel2irrc1d8b" path="res://assets/textures/characters/player_arms_diffuse.png" id="1_k0q14"]
+
+[resource]
+albedo_texture = ExtResource("1_k0q14")
+metallic_specular = 0.0
+texture_filter = 0

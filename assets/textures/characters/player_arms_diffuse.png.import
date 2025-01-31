@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxe3wr1s7yjw4"
-path="res://.godot/imported/arms_arms_diffuse.png-9cdafab0eaf752d01f01c02ea3bce58a.ctex"
+uid="uid://gel2irrc1d8b"
+path="res://.godot/imported/player_arms_diffuse.png-3a314628937399199c084ba89d0c27eb.ctex"
 metadata={
 "vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://assets/models/characters/arms_arms_diffuse.png"
-dest_files=["res://.godot/imported/arms_arms_diffuse.png-9cdafab0eaf752d01f01c02ea3bce58a.ctex"]
+source_file="res://assets/textures/characters/player_arms_diffuse.png"
+dest_files=["res://.godot/imported/player_arms_diffuse.png-3a314628937399199c084ba89d0c27eb.ctex"]
 
 [params]
 
