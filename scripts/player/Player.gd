@@ -58,7 +58,7 @@ enum Stance {
 @onready var crouching_ceilling_check: RayCast3D = $CrouchingCeillingCheck
 @onready var state_machine: StateMachine = $StateMachine
 @onready var arms: Node3D = $Head/Arms
-@onready var right_arm_ik: SkeletonIK3D = $Head/Arms/Model/HumanArm/Skeleton3D/RightArmIK
+@onready var arms_animation: AnimationPlayer = $Head/Arms/Arms/AnimationPlayer
 
 @onready var GLOBALS: GlobalsAL = get_node('/root/Globals')
 
@@ -203,6 +203,7 @@ func handle_movement(delta: float):
 func handle_attack():
 	if Input.is_action_just_pressed('fire'):
 		attack.emit()
+		arms_animation.play("punch_attack_1")
 
 
 func handle_aiming():

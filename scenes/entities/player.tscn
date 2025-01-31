@@ -68,7 +68,7 @@ collide_with_areas = true
 debug_shape_custom_color = Color(0.941176, 0, 0.0745098, 1)
 script = ExtResource("7_tdxe5")
 
-[node name="PlayerArms" parent="Head/Arms" instance=ExtResource("6_jv5ih")]
+[node name="Arms" parent="Head/Arms" instance=ExtResource("6_jv5ih")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="StandingCeillingCheck" type="RayCast3D" parent="."]
