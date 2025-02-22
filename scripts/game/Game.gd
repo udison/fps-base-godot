@@ -1,6 +1,9 @@
 extends Node3D
 
 func _input(event):
+	if Input.is_action_just_released('pause'):
+		get_tree().quit()
+		
 	if Input.is_action_just_released('toggle_screen_mode'):
 		var mode = DisplayServer.window_get_mode()
 		var windowed = DisplayServer.WINDOW_MODE_WINDOWED

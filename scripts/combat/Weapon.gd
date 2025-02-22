@@ -32,7 +32,8 @@ func initialize_weapon(in_holder):
 
 
 func fire():
-	print('bang!')
+	#print('bang!')
+	pass
 
 
 func _on_player_start_aim():
